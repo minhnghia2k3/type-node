@@ -11,6 +11,7 @@ import compression from "compression";
 import cors from "cors";
 // Import mongoose -> ODM for mongodb
 import mongoose, { Error } from "mongoose";
+import router from "./router/index"
 
 const app = express();
 app.use(cors({
@@ -37,3 +38,5 @@ mongoose.connect(MONGODB_URL)
     .catch((error: Error) => {
         console.log("Connect to Mongodb failed with error: ", error)
     })
+
+app.use('/', router());
